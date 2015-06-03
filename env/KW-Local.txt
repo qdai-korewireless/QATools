@@ -1,0 +1,11 @@
+@ECHO OFF
+REM This script cannot be run on its own. Jump to end.
+IF %1=="" GOTO EOF
+
+SET EnvName=KW-LOCAL
+
+SET BEServer=.\tel
+SET BEDB=KW-LOCAL-BE
+
+SET FEServer=.\tel
+SET FEDB=KW-LOCAL-FE
