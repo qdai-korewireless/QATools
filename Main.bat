@@ -12,16 +12,14 @@ echo.
 echo ----- Carrier ------
 echo 1. AT^&T (US Gold)
 echo 2. T-Mobile
-echo 3. EE
-echo 4. Optus
+echo 3. Optus
 echo --------------------
 echo.
 set /p carrierNum=carrier:
 set carrier=
 if %carrierNum%==1  set carrier=ATT
 if %carrierNum%==2  set carrier=T-Mobile
-if %carrierNum%==3 set carrier=EE
-if %carrierNum%==4 set carrier=Optus
+if %carrierNum%==3 set carrier=Optus
 IF NOT DEFINED carrier GOTO CarrierError
 
 echo.
@@ -54,10 +52,15 @@ IF exist %callFunction% (
 GOTO DONE
 
 REM ---------------Error Messages-------------
+
 :EnvError
 echo Environment is not set properly.
+goto EOF
+
 :CarrierError
 Echo No carrier defined.
+goto Carrier
+
 :DONE
 echo Finished!
 echo.
@@ -66,5 +69,5 @@ cls
 if %continue% == y  (GOTO Function)
 if %continue% == n  (GOTO Carrier)
 
-
+:EOF
 pause
